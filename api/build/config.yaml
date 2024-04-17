@@ -1,0 +1,13 @@
+serviceName: sh.proxy-service
+ginserver:
+  name: sh.proxy-service
+  version: 0.0.1
+  host: "0.0.0.0"
+  port: 80
+  timeout: 5
+  debug: true
+  pprof: false
+  readtimeout: "1s"
+  writetimeout: "1s"
+openTaobao:
+  serverUrl: "https://eco.taobao.com/router/rest"

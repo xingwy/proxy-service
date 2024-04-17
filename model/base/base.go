@@ -35,9 +35,5 @@ func (i *GinConfig) BroadcastAddr() string {
 }
 
 type OpenTaoBao struct {
-	AppKey          string `yaml:"appKey" json:"appKey"`
-	AppSecret       string `yaml:"appSecret" json:"appSecret"`
-	ServerUrl       string `yaml:"serverUrl" json:"serverUrl"`
-	ConnectTimeount int64  `yaml:"connectTimeout" json:"connectTimeout"`
-	ReadTimeout     int64  `yaml:"readTimeout" json:"readTimeout"`
+	ServerUrl string `yaml:"serverUrl" json:"serverUrl"`
 }

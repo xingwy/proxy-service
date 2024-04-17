@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/kardianos/service v1.2.2
-	github.com/xingwy/topsdk v1.0.4
 	gopkg.in/yaml.v2 v2.4.0
 )
 

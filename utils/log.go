@@ -7,10 +7,17 @@ import (
 	"strings"
 )
 
+func split(src, f string) []string {
+	if src == "" {
+		return []string{}
+	}
+	return strings.Split(src, f)
+}
+
 func LogError(t constants.LOG_ID, data ...any) {
 	buf := make([]byte, 1<<16)
 	stackSize := runtime.Stack(buf, false)
-	stackLines := Split(string(buf[:stackSize]), "\n")
+	stackLines := split(string(buf[:stackSize]), "\n")
 	_, file, line, _ := runtime.Caller(1)
 
 	lineInfo := ""
@@ -39,7 +46,7 @@ func LogError(t constants.LOG_ID, data ...any) {
 func LogInfo(t constants.LOG_ID, data ...any) {
 	buf := make([]byte, 1<<16)
 	stackSize := runtime.Stack(buf, false)
-	stackLines := Split(string(buf[:stackSize]), "\n")
+	stackLines := split(string(buf[:stackSize]), "\n")
 	_, file, line, _ := runtime.Caller(1)
 
 	lineInfo := ""
