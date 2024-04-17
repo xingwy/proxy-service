@@ -2,6 +2,8 @@ package top
 
 import (
 	"io"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"proxy-service/conf"
 
@@ -42,9 +44,23 @@ func (h *TopInstance) Proxy(c *gin.Context) {
 		}
 	}
 
+	printResponseBody(resp)
+
 	// 设置响应状态码
 	c.Status(resp.StatusCode)
 
 	// 复制响应内容到Gin响应中
 	io.Copy(c.Writer, resp.Body)
+}
+
+func printResponseBody(resp *http.Response) {
+	defer resp.Body.Close() // 确保关闭响应体
+
+	bodyBytes, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalf("Failed to read the response body: %v", err)
+	}
+
+	bodyString := string(bodyBytes)
+	log.Println("Response Body:", bodyString)
 }
